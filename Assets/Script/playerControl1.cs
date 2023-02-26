@@ -85,25 +85,23 @@ public class playerControl1 : MonoBehaviour
         myBody.velocity = new Vector3(moveSpeed, myBody.velocity.y, 0);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.name == "door")
-        {
-            Debug.Log("you hit me!");
-            SceneManager.LoadScene("game2");
-        }
-
-        if (other.gameObject.name == "win")
-        {
-            SceneManager.LoadScene("Win");
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("enemy"))
         {
             SceneManager.LoadScene("Lose");
         }
+
+        if (other.collider.CompareTag("Finish"))
+        {
+            SceneManager.LoadScene("Level2");
+        }
+
+        if (other.collider.CompareTag("Finish2"))
+        {
+            SceneManager.LoadScene("Win");
+        }
     }
+
+    
 }
